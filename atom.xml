@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://linuxops.fun/"/>
+  <updated>2019-10-10T06:29:29.344Z</updated>
+  <id>https://linuxops.fun/</id>
+  
+  <author>
+    <name>Eddieeo</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu系统启动失败操作指南</title>
+    <link href="https://linuxops.fun/2018/06/12/e83114b.html"/>
+    <id>https://linuxops.fun/2018/06/12/e83114b.html</id>
+    <published>2018-06-12T11:31:12.000Z</published>
+    <updated>2019-10-10T06:29:29.344Z</updated>
+    
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --><p>系统启动失败后，启动机器测试以下两种模式是否可以启动。</p><h2 id="在-ubuntu-1804-lts-中进入救援模式"><a class="markdownIt-Anchor" href="#在-ubuntu-1804-lts-中进入救援模式"></a> 在 Ubuntu 18.04 LTS 中进入救援模式</h2><p>启动你的 Ubuntu 系统。出现 Grub 菜单时，选择第一条并按下 <code>e</code> 进行编辑。</p><img src="/2018/06/12/e83114b/233457hjyzsbrkrv5ygr3r.png"><p>如果你没有看到 Grub 菜单，只需在 BIOS 的 logo 消失后立即按下 <code>ESC</code> 键。</p><p>找到以单词 <code>linux</code> 开头的行，并在该行的末尾添加以下内容（要到达末尾，只需按下 <code>Ctrl+e</code> 或使用 <code>End</code> 键或左右箭头键）：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemd.unit=rescue.target</span><br></pre></td></tr></table></figure><img src="/2018/06/12/e83114b/233457bixanaaxo8r3fxo7.png"><p>添加完成后，只需按下 <code>Ctrl+x</code> 或 <code>F10</code> 即可继续启动救援模式。几秒钟后，你将以 root 用户身份进入救援模式（单用户模式）。以下是 Ubuntu 18.04 LTS 服务器版中救援模式的样子：</p><img src="/2018/06/12/e83114b/233458nbo2sy2k0pdyh1d2.png"><p>接下来，输入以下命令将根 （<code>/</code>） 文件系统重新挂载成读/写模式。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -n -o remount,rw /</span><br></pre></td></tr></table></figure><h2 id="启动到紧急模式"><a class="markdownIt-Anchor" href="#启动到紧急模式"></a> 启动到紧急模式</h2><p>将 Ubuntu 引导到紧急模式与上述方法相同。你只需在编辑 Grub 菜单时将 <code>systemd.unit=rescue.target</code> 替换为 <code>systemd.unit=emergency.target</code> 即可。</p><img src="/2018/06/12/e83114b/234845oh66t6gtwtu4lu3w.png"><p>添加 <code>systemd.unit=emergency.target</code> 后，按下 <code>Ctrl+x</code> 或 <code>F10</code> 继续启动到紧急模式。</p><img src="/2018/06/12/e83114b/233459o8g8ff8w8gc3gs80.png"><p>最后，你可以使用以下命令将根文件系统重新挂载成读/写模式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -n -o remount,rw /</span><br></pre></td></tr></table></figure><h2 id="在救援模式和紧急模式之间切换"><a class="markdownIt-Anchor" href="#在救援模式和紧急模式之间切换"></a> 在救援模式和紧急模式之间切换</h2><p>如果你处于救援模式，则不必像上面提到的那样编辑 Grub 条目。相反，只需输入以下命令即可立即切换到紧急模式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl emergency</span><br></pre></td></tr></table></figure><p>同样，要从紧急模式切换到救援模式，请输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl rescue</span><br></pre></td></tr></table></figure><!-- rebuild by neat -->]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --&gt;&lt;p&gt;系统启动失败后，启动机器测试以下两种模式是否可以启动。&lt;/p&gt;&lt;h2 id=&quot;在-ubuntu-1804-lts-中进入救援
+      
+    
+    </summary>
+    
+    
+      <category term="Ubuntu" scheme="https://linuxops.fun/categories/Ubuntu/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://linuxops.fun/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第三方评论系统介绍</title>
+    <link href="https://linuxops.fun/2015/09/01/1b34862d.html"/>
+    <id>https://linuxops.fun/2015/09/01/1b34862d.html</id>
+    <published>2015-09-01T12:30:45.000Z</published>
+    <updated>2019-10-10T06:29:29.423Z</updated>
+    
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --><p>网站经常要用到第三方社会化评论系统，评论可以增加用户之间的互动，到底有哪些社会化评论系统可供选择？</p><p>常见的有：畅言、友言、来必力、Gitalk、Gitment等，有一些已经无法使用了。</p><h2 id="畅言"><a class="markdownIt-Anchor" href="#畅言"></a> 畅言</h2><p>目前状态：可正常使用</p><p>是否需要备案：是</p><p>是否需要注册：是</p><p>简介：大厂出品，稳定性、长久性都值得信赖。完美匹配PC端和移动端，拥有智能反垃圾系统。</p><p>网址：<a href="http://changyan.kuaizhan.com/" target="_blank" rel="noopener">http://changyan.kuaizhan.com/</a></p><h2 id="友言"><a class="markdownIt-Anchor" href="#友言"></a> 友言</h2><p>目前状态：可正常使用</p><p>是否需要备案：否</p><p>是否需要注册：否，如需获取个人专属评论系统需注册</p><p>简介：支持单点登录，评论导入、导出、自适应PC端和移动端。系统审核不行，垃圾评论多。</p><p>网址：<a href="http://www.uyan.cc/" target="_blank" rel="noopener">http://www.uyan.cc/</a></p><h2 id="来必力"><a class="markdownIt-Anchor" href="#来必力"></a> 来必力</h2><p>目前状态：可正常使用</p><p>是否需要备案：否</p><p>是否需要注册：是</p><p>简介：来比力(支持英语、中文、韩语)等少数几个，提供管理页面，管理网站评论内容。可手动隐藏恶性评论与灌水内容。主要应用在一些大型的新闻资讯站点上，支持社会化账号及Openid的登录，同样具有Voting功能。</p><p>网址：<a href="https://livere.com/" target="_blank" rel="noopener">https://livere.com/</a></p><h2 id="gitalk"><a class="markdownIt-Anchor" href="#gitalk"></a> Gitalk</h2><p>目前状态：可正常使用</p><p>是否需要备案：否</p><p>是否需要注册：是</p><p>简介：Gitalk 是一个基于 GitHub Issue 和 Preact 开发的评论插件。使用 GitHub 登录，支持多语言 [en, zh-CN, zh-TW, es-ES, fr, ru]，支持个人或组织，无干扰模式（设置 distractionFreeMode 为 true 开启），快捷键提交评论 （cmd|ctrl + enter）</p><p>网址：<a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener">https://github.com/gitalk/gitalk</a></p><h2 id="gitment"><a class="markdownIt-Anchor" href="#gitment"></a> Gitment</h2><p>目前状态：可正常使用</p><p>是否需要备案：否</p><p>是否需要注册：是</p><p>简介：Gitment是基于GitHub Issues的评论系统，无需任何服务器端实现即可在前端使用。GitHub登录，Markdown / GFM支持，语法高亮，来自GitHub的通知，易于定制，没有服务器端实现。</p><p>网址：<a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">https://github.com/imsun/gitment</a></p><h2 id="disqus"><a class="markdownIt-Anchor" href="#disqus"></a> Disqus</h2><p>目前状态：可正常使用，国外（可能需要翻墙）</p><p>是否需要备案：否</p><p>是否需要注册：是</p><p>简介：可以使用在多个平台上，包括主流的Wordpress及Joomla, Dupral等等系统，很多大型网站都直接使用Disqus，也可以看出Disqus在第三评论系统里面的地位。它集成的第三方登录基本上是国外的，比如Facebook，Twitter，Google+，linkedin等。但是这种登录在国内基本都是用不了的。所以国内的博客系统或cms还是不推荐大家使用Disqus。</p><p>网址：<a href="https://disqus.com/" target="_blank" rel="noopener">https://disqus.com/</a></p><p>你还知道有哪些第三方评论系统？留言补充吧……</p><!-- rebuild by neat -->]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --&gt;&lt;p&gt;网站经常要用到第三方社会化评论系统，评论可以增加用户之间的互动，到底有哪些社会化评论系统可供选择？&lt;/p&gt;&lt;p&gt;常见的有：畅
+      
+    
+    </summary>
+    
+    
+      <category term="Tools" scheme="https://linuxops.fun/categories/Tools/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Windows微信多开教程</title>
+    <link href="https://linuxops.fun/2015/08/29/c4e0fb25.html"/>
+    <id>https://linuxops.fun/2015/08/29/c4e0fb25.html</id>
+    <published>2015-08-29T13:40:12.000Z</published>
+    <updated>2019-10-10T06:29:30.001Z</updated>
+    
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --><h2 id="前提"><a class="markdownIt-Anchor" href="#前提"></a> 前提</h2><p>Windows上实现打开多个微信的前提条件是，当前后台没有微信程序在运行。</p><h2 id="使用windows批处理实现"><a class="markdownIt-Anchor" href="#使用windows批处理实现"></a> 使用Windows批处理实现</h2><p>右键单击桌面的微信快捷图标，选择打开文件所在的位置，找到微信程序的安装路径并复制，在桌面新建一个txt文件，命名为多微信启动，粘贴以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TASKKILL /F /IM wechat.exe</span><br><span class="line">start &quot;&quot; &quot;C:\Program Files (x86)\Tencent\WeChat\WeChat.exe&quot;</span><br><span class="line">start &quot;&quot; &quot;C:\Program Files (x86)\Tencent\WeChat\WeChat.exe&quot;</span><br></pre></td></tr></table></figure><p>最后，修改txt文件的后缀名为bat格式，保存退出，双击该bat文件，即可实现微信多开了，想要打开多少个微信程序，只要将这行代码复制多行就行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start &quot;&quot; &quot;C:\Program Files (x86)\Tencent\WeChat\WeChat.exe&quot;</span><br></pre></td></tr></table></figure><p>注意：微信的程序的绝对路径需要用双引号引起来</p><!-- rebuild by neat -->]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --&gt;&lt;h2 id=&quot;前提&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前提&quot;&gt;&lt;/a&gt; 前提&lt;/h2&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="Windows" scheme="https://linuxops.fun/categories/Windows/"/>
+    
+    
+      <category term="Windows" scheme="https://linuxops.fun/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows10基本操作习惯</title>
+    <link href="https://linuxops.fun/2015/08/29/11a80162.html"/>
+    <id>https://linuxops.fun/2015/08/29/11a80162.html</id>
+    <published>2015-08-29T13:10:10.000Z</published>
+    <updated>2019-10-10T06:29:29.236Z</updated>
+    
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 10 2019 15:49:33 GMT+0800 (China Standard Time) --><p>本文主要介绍Windows10系统的一些基本操作习惯。</p><p>Windows10 系统的输入法切换默认是Win键 + 空格键，我们已经习惯了Windows7系统以前的Ctrl + Shift的切换模式，下面教大家如何在Windows10下进行修改成Windows7下默认的Ctrl + Shift切换模式。</p><p>打开 设置—&gt; 时间和语言 —&gt; 语言—&gt; 拼写、键入和键盘设置—&gt; 输入 —&gt; 高级键盘设置 —&gt; 语言栏选项</p><img src="/2015/08/29/11a80162/1569488600885.png"><!-- rebuild by neat -->]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Thu Oct 10 2019 15:49:33 GMT+0800 (China Standard Time) --&gt;&lt;p&gt;本文主要介绍Windows10系统的一些基本操作习惯。&lt;/p&gt;&lt;p&gt;Windows10 系统的输入法切换默认是Win键 + 
+      
+    
+    </summary>
+    
+    
+      <category term="Windows" scheme="https://linuxops.fun/categories/Windows/"/>
+    
+    
+      <category term="Windows" scheme="https://linuxops.fun/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows专业版永久密钥</title>
+    <link href="https://linuxops.fun/2015/08/29/6a0826e7.html"/>
+    <id>https://linuxops.fun/2015/08/29/6a0826e7.html</id>
+    <published>2015-08-29T11:13:12.000Z</published>
+    <updated>2019-10-10T06:29:29.498Z</updated>
+    
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --><p>​ 很多人都在找 Win10 专业版永久密钥，其实 Win10 激活码不管版本新旧都是通用的，也就是说一个 Win10 专业版 key，可以同时激活 Windows10 专业版 1809、1803、1709、1703、1607、1511 等全部新旧版本。</p><p>​ 下面给大家分享 Win10 专业版永久密钥（支持重装），以及激活方法。数字权利激活是永久性的激活，在同一台电脑上主要硬件（应该是 CPU 和主板）不变化的情况下，重新安装系统时无需再次输入密钥，安装后会系统自动激活。Win10 专业版永久密钥（支持重装）:</p><h2 id="win10-专业版产品密钥"><a class="markdownIt-Anchor" href="#win10-专业版产品密钥"></a> Win10 专业版产品密钥</h2><blockquote><p>NXRQM-CXV6P-PBGVJ-293T4-R3KTY<br>DR9VN-GF3CR-RCWT2-H7TR8-82QGT</p></blockquote><p><strong>步骤：开始–设置–更新和安全–激活–更改产品密钥。</strong></p><h2 id="win10-1083-专业版-kms-客户端安装密钥"><a class="markdownIt-Anchor" href="#win10-1083-专业版-kms-客户端安装密钥"></a> Win10 1083 专业版 KMS 客户端安装密钥</h2><blockquote><p>Windows 10 Professional (专业版)：W269N-WFGWX-YVC9B-4J6C9-T83GX<br>Windows 10 Professional N (专业版 N)：MH37W-N47XK-V7XM9-C7227-GCQG9</p></blockquote><h2 id="win10-kms-客户端安装密钥-永久有效"><a class="markdownIt-Anchor" href="#win10-kms-客户端安装密钥-永久有效"></a> Win10 KMS 客户端安装密钥 永久有效</h2><h3 id="operating-system-edition-操作系统版本kms-client-setup-key-kms-客户端安装序列号"><a class="markdownIt-Anchor" href="#operating-system-edition-操作系统版本kms-client-setup-key-kms-客户端安装序列号"></a> Operating system edition (操作系统版本)：KMS Client Setup Key (KMS 客户端安装序列号)</h3><blockquote><p>Windows 10 Professional (专业版)：W269N-WFGWX-YVC9B-4J6C9-T83GX<br>Windows 10 Professional N (专业版 N)：MH37W-N47XK-V7XM9-C7227-GCQG9<br>Windows 10 Enterprise (企业版)：NPPR9-FWDCX-D2C8J-H872K-2YT43<br>Windows 10 Enterprise N (企业版 N)：DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4<br>Windows 10 Education (教育版)：NW6C2-QMPVW-D7KKK-3GKT6-VCFB2<br>Windows 10 Education N (教育版 N)：2WH4N-8QGBV-H22JP-CT43Q-MDWWJ</p></blockquote><h3 id="windows10-企业版长期服务分支"><a class="markdownIt-Anchor" href="#windows10-企业版长期服务分支"></a> Windows10 企业版长期服务分支：</h3><blockquote><p>Windows 10 Enterprise 2015 LTSB：WNMTR-4C88C-JK8YV-HQ7T2-76DF9<br>Windows 10 Enterprise 2015 LTSB N：2F77B-TNFGY-69QQF-B8YKP-D69TJ<br>Windows 10 Enterprise 2016 LTSB：DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ<br>Windows 10 Enterprise 2016 LTSB N：QFFDN-GRT3P-VKWWX-X7T3R-8B639</p></blockquote><h2 id="windows10-homewin10-家庭版激活码"><a class="markdownIt-Anchor" href="#windows10-homewin10-家庭版激活码"></a> Windows10 Home（Win10 家庭版激活码）</h2><blockquote><p>TX9XD-98N7V-6WMQ6-BX7FG-H8Q99<br>3KHY7-WNT83-DGQKR-F7HPR-844BM<br>7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH<br>PVMJN-6DFY6-9CCP6-7BKTT-D3WVR<br>PPBK3-M92CH-MRR9X-34Y9P-7CH2F</p></blockquote><h3 id="oa-30-版"><a class="markdownIt-Anchor" href="#oa-30-版"></a> (OA 3.0 版)</h3><blockquote><p>Win10 家庭版 37GNV-YCQVD-38XP9-T848R-FC2HD<br>Win10 家庭版 N 33C4Y-NPKCC-V98JP-42G8W-VH636</p></blockquote><h3 id="非-oa-30-版"><a class="markdownIt-Anchor" href="#非-oa-30-版"></a> (非 OA 3.0 版)</h3><blockquote><p>Win10 家庭版 46J3N-RY6B3-BJFDY-VBFT9-V22HG<br>Win10 家庭版 N PGGM7-N77TC-KVR98-D82KJ-DGPHV</p></blockquote><h2 id="win10-企业政府版-400-年期限密钥-相当于永久激活密匙"><a class="markdownIt-Anchor" href="#win10-企业政府版-400-年期限密钥-相当于永久激活密匙"></a> Win10 企业政府版 400 年期限密钥 (相当于永久激活密匙)</h2><blockquote><p>【EnterpriseG】FV469-WGNG4-YQP66-2B2HY-KD8YX<br>【EnterpriseGN】FW7NV-4T673-HF4VX-9X4MM-B4H4T<br>【gvlkEnterpriseG】YYVX9-NTFWV-6MDM3-9PT4T-4M68B<br>【gvlkEnterpriseGN】44RPN-FTY23-9VTTB-MP9BX-T84FV</p></blockquote><!-- rebuild by neat -->]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --&gt;&lt;p&gt;​ 很多人都在找 Win10 专业版永久密钥，其实 Win10 激活码不管版本新旧都是通用的，也就是说一个 Win10 专业
+      
+    
+    </summary>
+    
+    
+      <category term="Windows" scheme="https://linuxops.fun/categories/Windows/"/>
+    
+    
+      <category term="Windows" scheme="https://linuxops.fun/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown文章模板</title>
+    <link href="https://linuxops.fun/2015/08/29/817bfc99.html"/>
+    <id>https://linuxops.fun/2015/08/29/817bfc99.html</id>
+    <published>2015-08-29T10:16:12.000Z</published>
+    <updated>2019-10-10T06:29:28.995Z</updated>
+    
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --><p>这是一个Markdown的文章模板，写Markdown文档时必须在文档的开头添加以下信息。</p><p>特别注意：此段开头必须是用 YAML Front Matter 的格式输入，注意YAML的语法格式。</p><p>title: # 文章标题<br>date: # 文章创建日期和时间<br>categories: # 文章分类<br>tags: # 文章标签<br>toc: # 是否启用文章内容索引 option: true<br>sidebar: # 是否启用sidebar侧边栏，默认开启侧边栏 option： none 不启用<br>mathjax: # 是否启用数学公式渲染 option: true</p><!-- rebuild by neat -->]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --&gt;&lt;p&gt;这是一个Markdown的文章模板，写Markdown文档时必须在文档的开头添加以下信息。&lt;/p&gt;&lt;p&gt;特别注意：此段开头必
+      
+    
+    </summary>
+    
+    
+      <category term="Tools" scheme="https://linuxops.fun/categories/Tools/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://linuxops.fun/2015/08/29/16107.html"/>
+    <id>https://linuxops.fun/2015/08/29/16107.html</id>
+    <published>2015-08-29T08:21:30.000Z</published>
+    <updated>2019-10-10T06:29:29.098Z</updated>
+    
+    <content type="html"><![CDATA[<!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2><h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><!-- rebuild by neat -->]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;!-- build time:Thu Oct 10 2019 15:49:34 GMT+0800 (China Standard Time) --&gt;&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noo
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
